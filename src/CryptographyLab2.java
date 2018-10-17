@@ -16,45 +16,74 @@ import java.util.regex.Pattern;
 public class CryptographyLab2 {
 
 	public static void main(String args[]) {
+		// Decryption
 
-		// PART 1
+		String ElenaCiphertext = "bgogcnpldospwiuscpakimqbhgnlxukfgofpbhualuqywnllbcecwabbqleamb" +
+				"lmfyolkigwxbvrwzgksdiglkhpgwthbsyevkwlvpifstcodjeghumokuxxgfan" +
+				"raizpdlwjlshscwzgsdtxtbguudaxfvvagauqmgadwvfxegxbeeaamvgtsgefs" +
+				"ktsyfzuamanvomtvwmzrwpqcdulgbenhesjwaesjhbuttgbedqzpaazefedjtm" +
+				"fvumaghelamiugmgsqzpspkalxrzqmtttjmpaswufpvcbnimlmdyahlswympie" +
+				"zctkbymecmholuhihlmoibqevhlgssnrgplzwxmmkvvzsdeosegxlfsciiscoi" +
+				"voxtwampbwglnrvmutcmhweiikpilamprwcflajenqbrjhbscpvyrosoatpkgw" +
+				"cnmqfrufyxavafsimgqajxqrvmygbuoyhphbruogsjmxgvgtthhafxefjdchvf" +
+				"tgatrmkmesjsgbqpzvzneswqwrwxkuikqwgnxymolvvmioizdlngddhpfomxom" +
+				"whdtczhgfutnmesswmtmsyysemjddltknpfllwrvbsiqdtooygsdztpreghjin" +
+				"lamryetcjxikyqtpsitsttidvhkczilgxokiecsikweswwltltltwpziqhcmyb" +
+				"ukxuuzxrbhtzjgnrpsookmpgrwapwymwautfwpvmpbcfxhkztktovyfetylvwv" +
+				"qqwahavvswilsoiksigrvwdsyrdaqufxdsrbtbdcchtbohnqklatnbuhlgvetl" +
+				"pvtdvriyhxyxlxcyifglwyvzmppuhcfoevwecsbddjppzyexyqnwezvdmfxplp" +
+				"ofsvefrwtrqcxkiaphenzegyapdjhhplszxkmqiwxgkvzgilamjprmmrleqdrf" +
+				"bjzxagvdrqilisccdewlrpsfqpvptzgrtcpwceklemyqgnwutyfemioirvfpvd" +
+				"qiyeiulwdktdxyzvpviomiwkyomvtwtvfbflgruvdprbomamvroizftkzhvtan" +
+				"hwohgttymyeohaueiglxjvvyavfrzimeyfgkgmpdgwlsspgpeugiurwnzlrrbn" +
+				"seiedceclbsakxdmwpcivmsikprmesptjvilaavuvhvdqyvwewmmouwxtnppvw" +
+				"zakprxoiilleiyelitaowikkwzlljlthfnxpprlgibpusiowykfzutmmvczxhf" +
+				"vjvaxszrmmhzmadsgrieaxkpviqxkvklefoksuquirmrbwphneiyacacrsfrlx" +
+				"htaqhlgnsirooftzplewckytmprlpzkgpalmyussmzvayfvtnipszvunzhjxrj" +
+				"melvylnxseivgjzxqcubkgnqvbmjhgatiysnnwlbhpcwawzxaxqwcwhmgayjke" +
+				"ysieksevwunieiuudqqktalwcoifwzhdjbjwhpndesimswqtsfmipwjmqcaico" +
+				"qyovfajxtshzldlsmltxighvrqmnmoebpafeediehshvoahvnpugjippykwfwa" +
+				"biirwrhwdhzwzpyxmsidtrmqpaoijcadioxvpwfixpwlzqrohgmcjwbbhkfbua" +
+				"hpitrxlwxsaxyezcmmvjiekiawiynsfbhgteyfxjidwtkcvpvowebxpapthgbi" +
+				"oiuatemmvhbkkoreileqzamhmjprpcrgthytcbpivwyllvsovkusqxvjvwusfr" +
+				"mgsxskksnhjpslpqcubhfqyorgcaelxfazmoeutxnlkhyexeixqnrzsozelstl" +
+				"bofmpsxawftnpvthwiceseiebonakbeyraoyvzhyeymynugzzkqiltiorzxawa" +
+				"ariaxvbsgmwefshaaswkhyuoctmvtphlvgfrtbgjdjigqolrhzswvlugcfwtrf" +
+				"sgaegwhrptvslwsmmydhjrjfutgftxridwdlrlehruvalfxfuymnlnayrrxoat" +
+				"epdhlcivmsiivvmnlsukynsmvxysqdftaaqawmfzhvzzofwpnzyeglbkhvjqzn" +
+				"punghvxkhyskuhcijmjjpjvjejcwbtnliyquhrugwtwxomdythlblzlcfgceep" +
+				"bhoodpggmrjuficfmxbjocwgtgcuwgcielhsieklvgmbqtvwuggvbybwlulhwl" +
+				"quahzvfxedbgliixjwfainkfflxdpvzjlauwqgjbkrvvqkwvhtytypguuriexz" +
+				"hbpetvkxrambukbwtmrqmqtgtwqmoiluerrdllhestyqmtjdikkbvoiormjmpu" +
+				"ddrbhvvvroiekmdrigbukielhaiqfwxujtrmcakmpgvpgzyliyhxyxawbrhihm" +
+				"wllskdvwifrtswcounjtnhzgnnodweomgywnaneuuokegyobtlxzlakwwlpkzz" +
+				"fkmshiwakhgcwjjeuxiyehuxhqxtltwagjibviamwhrnlloqmniclpwiiikspv" +
+				"myssewbcsovvrauhlmdtlwflrfaemunisnpvhnylfviuebsauiqfvbtsppdqvz" +
+				"xcibdanztgupilpkdxkawskcfsdxenkgstxbybsbyxkaholpjhefsjwbehfbty" +
+				"xwjmnzdxofrwvqiicvxkmpkpqvezkgvnrejxmxqftctlskbavtdkeameglrymd" +
+				"mbohpmavjvbewtvpwiljwnyiektmjitywaeggzezsvwipxxdvlwcyqtzdwgcza" +
+				"eisibetxwdqftcfotzcsmibkqvdmxywscweelblvkmlbztygefzaedhzppoxnk" +
+				"taivjtwmrfcqnxawjvrymfoyahujhlnwmqcanzmbvqllmqdyyfxfjzwgyowzhn" +
+				"epyimcygkalzousqtwwqkxlxpvgikcneoeghuxiixtmghdnxftopcvwjsppzlu" +
+				"dptovrmqpibdzmofvbnnzattsrqkaceqscigoxxjaoxgaughbrxbnztefeeovv" +
+				"ucwrcittsetczfoampwwqktdjxbyadcneigpynsonrigtsyeiomngjjfzxtmlm" +
+				"rbpbdhgfgzmdpsekbwpwuvtkjkfqhrnpxkilnredbpzgqtpjcffwkjxjziaiuk" +
+				"sexhaljtzindftlwsxjhulxlgviroiuayevzimhwhhgsatiuevtwtbrweseqke" +
+				"ewbsolsjgkwuimdlabvfxripasnvxxtzscovihhvppxoohktkqxqmhybkwlhkr" +
+				"bagwsintofbukmlsmayievkcjmlkbqtrvzowleupossgsgqnlselxltvqzayfk" +
+				"xeiurwzpkuchhtzyeynqihzkgtrupddxyqitzshimtaqnusqtdmpsgavuidvut" +
+				"lklgluvvrevgbihtkaqqhnsgrgxhdnshcyndulrsiwbqsjpjhcllxkscpivsqp" +
+				"ladnowlnpamgovmosgzvwlugympmgjwlaetmphuaauitismhgqephwzartfdcd" +
+				"tchwbvfjqwqassekhutsjrmaiqrmqwzbtmbcudnecbhtpdhicvibprzegmavnx" +
+				"ioxvnwmjrztdrhisgkveutiqlqpgrasxkmuinmmawqkitiwiinbjmsefhrglqc" +
+				"dasgijmvvfprgbykbulkgohoscscugjlxmbehzcufnllbdqnvcfkfrnignmtke" +
+				"caaralfctenwsbphqxhrbwstmxixnajhqabumqprsxvwiaznkumloineqegcwx" +
+				"kechldbrwqhpmrlwjcrjjiwtnebephdxtmzwtbxsmqyqzdkaeyufrvslqbwlme" +
+				"ybjcagnapjlvhtsthlqltkagubrwoezrfezieomgkqekirqhalatrdvxwlpsdh" +
+				"jpxlmsxemohdhxexrgfgkibwadotwdijxbihyjdbhbttgbcyawxgkondonhzvp" +
+				"glpilhnvjlwhvweczvpiqhgfdlrcexlgyval";
+		shiftKey(ElenaCiphertext,"the");
 
-		String plaintext = "Cracker Barrel's menu is based on traditional Southern cuisine,"
-				+ "with appearance and decor designed to resemble an old-fashioned general store."
-				+ " Each restaurant features a front porch lined with wooden rocking chairs, a stone "
-				+ "fireplace, and decorative artifacts from the local area. Cracker Barrel is known for"
-				+ " its partnerships with country music performers. It has received attention for its "
-				+ "charitable activities, such as its assistance of victims of Hurricane Katrina and "
-				+ "injured war veterans. Employees there wear a choice of either white, yellow, blue "
-				+ "or pink shirts.";
-		String key = "zyzzyva";
-		String ciphertext = encrypt(plaintext, key);
-
-		// PART 2
-
-		String ElenaCiphertext = "qjapkofclpgauficevhvujgebkgtdjhzctdssphzrvgnrbvvoccgueecjvolblkezgljejhmfyftspacmrknxwfhoiasvifbkaskseuiecjfeihgutlrqvhvvafdvbsupvqluowhzgspglgmjqjapkofclpgauijikgdkctterqzerpdlqgiohjitgweuiwlaspglgmjoffgrwfcctskutfhzgcfblgnkggheeqjapksvoejgsiejsngnztljetfqrtfujcpywumepwkwnbbgynzbsfdzhaqnkcectysectzqsnaeodaszgghcimhvoxfsrhzqsngffavhdgutyghspacmkkszbunuuskvhvglwdpcxuiusujaebwnakhsekjhzctucfqtkojiekkwckeskuejwfvhvqjapkcytagvaeacugtikveutyseuecjwublhapskssfeoddqikkwckeskuejwfvhvwjkmgzwoeehsvifb";
-		String KyleCiphertext = "GMEAZPIECBKEPVRFIRSTGKNNQXRZUAFXUQYOPSXLURTRBBIYBMZBUOFEAIIPPYABUSGEPBYNOHRDKAUWOCZBGTRZYBOEYMDCFVVMTPFWRFVRSMRVIRTAUQIUNMYTOBOWBNVEJWBVKETLNDKFVJSMXREXVUKNOHNOGVOMGQYGIIVVYVEIFBUEZSSIIBOGRVZEBXVWTPBQCBUYEFLWTRPJVBYFVVIQBBSWGPOFUEYMOFOSGKUADIEVKQXMGPZUFKEMGGISEZUETAUQIUIEIMGYSINLEOFIALKFDVVJKQPJGMTROSHONGISHONYFWFWLGFROMRVFZRLHHUAVBNGIIZCRGJXHLKBGWZIRYUSEUKAUWVVUGIIEEUEEWVBOYMXEGZBBRFEKEULVAWHFWGQUAISJEGFFZRZEQBCYQLRJRNKUADIABXNUMBVINNTEMLYFGGMJVOXUMSVOHBNZUFEIMXNHICZOFPRRZSBTXBNZUFIIMTGTHRAIEJFRLNRSIQQJAPXGIQRQPNKKVOXUMRNSKRITQGEZWAFDEZXYOVXVVZUFWZIRYPRRACUFVRUUFUSSBNRSINTKKUIEUOABXVWTGPSXXRNDIGPOFTXBZEVTRBBGOPYGBNRTYSNKEJRTITQEINBNBGKEMGGIIEWKFBRQUGEUCEATBSMFQZNCSHBZUFTEWSVOIABINQSFXXVTSAMXFXLBIIGFHNAZEVWGMKFIEIQTTTTRKONMTEQBVMITMYBSARTRXOSJVVEJWBVKETXUCYVUMFVUGTSZCIUDSAKKEOIQEOGIXUMYHGJRZOAHWBNZUFQVONGZFHBCVULGPKFBGEQLVDIFBNRDVHKOSJBVWTNOHGPKQFEGPYBGXUMMEFEGIXZZSSCTXOSJVGAEYAZKPPVQMJIJGGQSFJXJIYGIIFMIBNQBVVEJWBVKETAUWHBSIAWJVTXVVMHJWUQTTNEESYBOXUMOETPRMBRTAUWSGIIPIVBTVRIRYZHRAVVTIQENVMIGPKFFSELOABVLKN";
-		String DavidBenCipher = "DVBGVBAOQEWMSSXVHIOWTFVPBFFFGPASUUSEYCHUHFVTNNFDOSINHIWSSPSEACUUSSVHFNRCHHIRRFCSSLJFFSJFKJJVMVQPBFPSKIPQIISSAIFTSEYSEVGUOSGYCVYKINNFWVJEITLSLJWUOVJFGXLHFOFFLHIVGQPFFQVBAVJRJFYMIBZUHRIRSUOHIRHFKFFPFPWDFFOEAVFLCHLGPRVBAVJGVFYONUWTOOMSSDVISFMSVSBQGNHZFSCXSSTZOLLAFYCEFSUUOUZZFCSBSHIRWHOHXVHIVDFLSTVDSVYFAVIRABAISRWIPFDBFBNSTGVBSCHRTPSYUBUPVCQVZHYWNNUFZOECOMTSSFTPYHPFSLLGUEOVNSTGFPKSTGCGLFFUOMDSTPCVAVFVGPKFZYCELGBQGQLQJNZMFTSBAFCSSLGIPFFFSELCGRUFSCEGCDHIURFCBFZGVFFKFQSUOSIBZZIZJFTVSABEHJYTPEHPZSLRHIHHIRAIHHIUCMWSXUOUOOUGVFFKFESTLYF";
-		String KaiMarkCipher = "wsrrrbdrwllhuegfpvvlgveezyckxuludsjolfddpfafttsbuuwppfarwllrhtnwpbbewteazldyifhjadmgouthvlayhrjbybduiavuioijhqilhoyyckwqveavajogazxgochjvrlawvayzaglipogcnpbbbebxfaftdvraawalnajxlwvuudlmaycblqoyycjibmyhovbbbcvavaghalragblssugvoxgoyialrnppcifhjanecplvdmqlcklvlvltsigzddyxuoghzteprtprgocroyejflhcchrwzxbnjxkinublljnppxlwgoyikseblqfxulrgptylftjeglqilezmpdtxulnglwruatvjgochbrsvjavavueshvxuchzpvrcpkvrhkcvanycuysypacvxntmjzifoyashvzrjyfgoghoeysmllhuvshlmntqtuxjprwivbvkqljbycivwjlcealrkshafrogckxulbdvvbicgvrgopdbkuaftoshzcvpzrnyioieplvsmtorqfxulbthhnubsysjzwupvrlttycrsdpuhshggfwcygillbwyhsmtorpzfvybuyszipxlvnubiomfkgiacnmrtyqrzgcneakbpugrpriymcwgcnplagihrvhdxywgycwleezcnvyezmcnflymilxblyroabybpdeeijxukavrtoeakgcoeakuxalshggfkehatdmysutzmanyckfylqhalvznahgrvztysaumlbrgpjioioycprsskynalevsvoxupqwvyflcpjlshggfwgyynasgocqlwgipxkiolblppydclompoznbwfoyasfylqhlholyckxulghzyraftyipycpairccgzlnsjqljbyrjueglqdzlnsjpspgocrvycschalelctcieapjlmasmkprticpuhgocqssgzmuuegbptzlnubhoeysldamaaftpvvzqjlwghlsuiilpbvproyglpvwldywphpcvvzhpzwvbkgvpshzqjjlnzyglhrznxziqplchxvcgifwuhjabtburwlmejfxshellqlavafiomfmgtshqlurvrflaghxrlttycshggfxnrcwpwthgihrqlyrowrccghppoybiieijtzwgopdbkuafxztnsyrlavafhdiranthgrhlsalrvuclvbmgiiprzrtciezfpspvuqpmigfptzxgygehanfkpriavqihczlcitinsjqffelyzvjqhwebgxpdllwuhbddwuhttvjsllslhgogcrfharwpwnubpspvzktuhrkrwhxlvswhzrisizphtztyiqocglaupjtalrzckpwvvlhkmqhneleehlsalvzuthonubxkprafttiavkdyilpcakmanzjaeqycptkruralwqvldavrwptoiakgufshwygksadclppytcckeakyhpezhlwvrrzrebgxpdlllnccjuinyltkphjicvagvqrhtraftziewccawgvlvbijluxspzhithqrubhlvrsmcniyzcioicbazhpvhprhpyzmvvsqugvoxhurdfshhjanmilktfshyfpuhfpdllfrmpxlrqzyckvbigczlnsjglwgvpthqrubh";
-		String NathanLeahCipher = "FHMSBRAGIETYWOKHYEVGXDLRECZVITQBZONNIOTLMLXUTBMGUCKVIHMEIAASHRUHXABRWBGYQOVOTTBVETINEBMEFIIEHUVQROCEMEMAEIFGRSMIQNIAWUARPAURMATPUPPRKDQFOTWFPIBPTBMGPEMAOIXUXRIYBHIOXTANXBMEMIAFKSBRFOVYKSEVMCPRPATCAAJRFSISMEZFQVMETLEBDDANGDAJUTKUXSERDEQAWIKNFELORWZVFIVTMHMYQTBRKONGTEKBKRMFBOVQBNONXPPNUEBVZTPRVIXUQRBRQTTNFEZWHHIAZEAGKIBUQMQHLIVUUSEBKKXBXYOETPPVMEEUBCPJMSKBFPTRFELVGMIAGSKEBPBSARUVGFQSFEMAHEQTTTJHMFQEETXHULQFTELVGFQSFEMAXIOUFEMABNDRZTMQMHMGMBCYTRMPFAIPKIBVOATPHMXBZEVGHFBUQVQTXNMEQCQCAEZ";
-		String JohnAhnafCipher = "CAXCUIECTPABWSCATSWVPPOMHHRTPOXFIINVCIOQEYGEUOURQTQXNGWSKXTSGSPUBAEVLLTMWIPTCGALIRREJIGAQIIVMKNDPQKONRHMDVWULDQPVPXMHRZHBAEFVZYVAAYIMGKHMHYYKBXDOIDUJRTKITTAAAUIODMEIHJDYMHBVICXMMHDRMABAELVDJIKEGQTUOBVLRRUEAIFLLTMBNWLPOIBNHBEGZGAOPJFQKEFXPFQGTKITTIGAOCDGAOAUMZWAEYPEOGWYAOEDVIBROEFFMKBDGVIMHRJIDJMIAUHWALBAZIWNAYRDRNKAVAUZPTIGNDAPVPXRHPWCVWEPICAAMALRPUBAEFVZYVFEQLLXMUEFSXGUHRHEYFUHRHWFIOXSWMGGLXSSMEGBAEIENVBAAWRZVPBNJLLUJXEQTCQDXNQSMQLRHDWMGMGTUMPFIGDQSYGEBNISCOIMIRRSCAVOPIEQTBGKXEJMBREIWKMYSKEGGJXCRQPOWKEIEYEQYUOXSGQKHBTZVPXSHWWGALPUENVQVAOXSGQKCRYYUMELHWDIMKMDRPWVVOQJTTUXDVYDRQVIRREGVWSRZPTBBMHXZDMVOPIHKTYUOJLNTTCLSFUIGDSVPABHTKIGKKBSVMEWLXSRJXQWWIWENSCBRHWLNTMHHUFCTBTLIDQNVOPQZPANPHVDVQMIRRLPLMHHQPPWYTKINTWPNKSEGTPHRWPPMQUVSQCTEEJMLPKXIVWEKBVHHHLHBXRDPWKVMHHFCKOATWLCGIWOIXTOMTNGQZVQHNKEGGTBKHEWNUXNQSTOUNNLXJVWBNIPFGVVE";
-		//String SpencerJacobCipher = "TJZGVLPAVKUINJWFOYJBBRIZYKNCHJPHOUKHUYFATUFBYWFGTTPALFMFDCKOAYBHRQRQUUTACJDOLGZSLNGFBZMTINZHLDMALCJVBPFSNFECGNMJTKTIYYDDYYZHGWNATQWWANGLIUXCVLSLOVLFAGZLOCIIAMZKTTZBTMROOTUGVUMKANNOLQFGLFJOLUTSTAFIGFUFKCERJGFZCQEJVAFAOPECFSBWRHCIBSEANHFFZYFAOPNVNRUKMAGCVLFNONLBGYDALAYOABUUARGWAEOGMOLBVAMLIQEHUMGYHQEHUGEKINCMFSNASPFHZWSGANECEBAAFKERVRRMNCERPFDASVZHFJAFGFZRARFZIPBWJMGDDNRQXYNALKKMGMRANKJVGFUKTCJYVLMKAVZGSYOLOTPKNWNMTKRAQGZANIFBNFGEINZHLRMJTPFKUYTSAVIMNRMHUPUCVQAMNFYIZYZ";
-		String DexterXuejiaoCipher = "mlpvtkzeeewapmjuxvpehcelmseibdvkhycsehzfbwxegclgweyccsnmxgsrdzfzbglpprmtggpwiwcebexmcqixwmmpnsovbxphppfnmxsieckxgxteadflbxtztclmvsxihcwjneyxjathftfxxbxyksxjxbubgkyilqlkxwesswjxtwpwicyxettrvrzlvsgigbvpiecxxqcxlmelxbbmamdmhhyxfsdxtltbmiomwomxuiprxbdrxremgsttkipvlsjahywhqswhvydmcufnkiyiguptlqfgwcemaiashwkboizyiqffxwlwlstnkvprizptkieltbvztxtztcexlwzgpzcxwufechlfvsxqjbzvtxtscgzlhrpsuhyxfscixbkxkidxxbxtitwmrokbhrdtaoegxhqsghyxyyeygsfyjylriidvhqayiwezkidipftaxvdmcqybgelrssclxasigszgmlpadfcwaegiqsxngiitacibgkeltdfmxrempzfyuytpswezjylriidgxxhsgyjnlmykivvltqptgwevbtwihpvabroujoemnqnsbdlmbrrxwstkxeemdbfymlpwtbvmpscohkfnehpztbkntpwcddvgmlphdciyhvlujoemnqtrisigxxlqdfvlxgfvtqfffyymrokbhrdchhvfbrhlxqybgjzvbokbhrtwhhfkxhlrshitgwxmihvwpmelprmtggphrfpimsrvpdyrlynlpbvmpscowcnxoicgdicwgxmiiflervpeawqxwyyxxzhntreybqffiyeiggsxvsxihqretfwilvzvajfxjfzlfvpessilmltrzkzeellteseuxjzvthnhsicsuwmxsicslocftvemhouwbrrvdpfmlxzmignhkoqsgqvtlmegdbkbgypwicjabjemchftlxzvttihgxqsghyxfsoigbnhkpoxwsixmetptfytlfpichvlmmykivvkhfzxhwetgyxftffylxzvtgzgtvvecgrliiyrhmcotrtepbuvtptjdfebtasigskaxccijgvwyscvtdvtmemptdixwmnxppcxtroqpbltexlwzgkaxdpvdgzqhrpqthvkmazjihreevzfdhjtkipujwgixhhmivrmhapvpbutlicmtgfyvexigojtgheltmdhoiftpbuwhayexgcxlwnecbzgzwsiajvlyscsjhfylxzgzwkxfwthtbkbyctrvwevhvcirhgkbgpwpbumtotrvbfmxsqagcezhvxmhgzgzplftzjwtxlmhhyxgtlwhsuhgxzibdchripwlvfiksnitrkhlxzgzwkxfwlrsqfkkinxbwjmtopwxbzmbewxtgklhjeltffuhxdlpjvuxiywjqtxlwqyasehnksjdfnteqlvihfxqtlrshyxbvcsqckyeipxicrghxsigtzoxdpvdgkhkiderffllxsirclgmvjfjgzgxwdmcgzwxvciecimlxsmhsoitrdmdbnbepmircdieieisppmaiprscwctrfegmkphdpvdcexxmrlikybeicihsrkvlpvhvroxqlrpuvwmsnvtokxjylriidvhqayisilmlpcpfvtepmyayptghzramnhkotrhdvvbewmosuxgztvdbdxgxdxwsixysciivvynxfvtcwjneyxjathftfxxbxftctrrzlwxxsiprfimmzrdtremicrphzoxwesivvlrweibgtnkvprizpuxmykrfvtmiomcqlmmmyktrxxeemsgokhkmpwivvitxsjdfntkhxenpvmavzyvvkaxgciphzhgsqwestbtptdtrthftfxtftabtdgpdrueizjuievmmzrxbxebopujoemnqnsbdlmxvdfjhjtgweltgktmizjivvtkxnsbdfgxrewivflxwjwisdlkibyxfvmaibypbknfgzqeikbgkcikccnmmzrrclewewwdkveefpkxbnbmleltomxkeriesilhrlgrsjlbrrefirgmyxgdagnmicxwffnzllgaclwliczxqvlngsehhyhlitfboewzszkasytoinvtokxwmelxbbrhycivczgzxzwtsxxgiceaomtbplfxzzmrsqwxaletxzvhoewxqfpphfklxseioixnwpjjzzgmlprtlkmpsqsjfdhgxswhozwaycptmjmbpwxwcjxlcdxtajphywhyijmuiltaotxaswhtfwhkxsigsrewilplvzvalpwtsjtkvtzxbxbgxsiccklhhtwioemyyeygszphywhacmxmsditolgbzpvhocjneyxjathftfxtfrotmweqzvtlilvawvktwelgsvmhjtztmvtkwzyioewbfppxsmxmllxrclewfptdgjbupp";
-		String DavidBenCipher2 = "AKBFPSPZMVUBKHIRGMPHILHPCSTQWENMSROENWNOZFPHIRKBISBYZNPATLKFYSUUSCVFPTCWLGBQHILAPZSSHHIFCVAUSNPFISXNFFAVFWOCISSJCDRAZFCUOSKNKTAVBGPJASUUSDSOXFHIHHDNHDOPFJOSLHIRXVIXVOPJYRBQGIBHIRTSBAJBITIOERFTHHDUVFACPXVJZJPEDBSGXBFEPVBQZPNHJZSUOSNNLPTSGBSILGPHUIAGPESTASEUSCFHIRHVTHVZHSLSBQGUVCENKIPZFVHIVIHUHBKOTVIGMWTUHIVIHUHILGUBCEAVFWOCISSJCDRKJGVFFSTBTGSONRQBTSXUWGMZJTHIYCVTVUOSUHZHLMXBCEHRCHFCSSENGJAQBZSPLHXBCFAKPNRUOFPHUIHRUUFPBUIGVFCCSCOMIZBQSXLHTVQLLFTNQLOSMRTUPHEROEHRXVHIPHTUSBKVFJSUNOMHAQOWHOODROEUOTAHIBITSOJGVFQOCOSSDCDXQPTSUBAZHFNFAZISBZWTOPPLCGYOCWCVZRBLQBSZPBVDHZMNMILQIBFUSSEVVJZXPLHXHGCEWMSWHNRUOSTYWUOMUBJFZRJQUZYSBQUJTPMRWUOSXNPFHZMZWNZMXRFFAVFOCSVUPISTHRUUSNVAFEOUOGPHHHYOCR";
-		String AbeFranciscoCipher = "LQCENOEJGCFHPYGOIVZGXYCBQQGCZJEQCCFHYMPPUXJMRSWNXMPXYNHDJJDLSMMOJVSYIXKBOFJAPBQYWMXNJEJVRPWRVHFTXGOMKFBMJXJBENPXROWJHSEVPYIHNBQLYMKJERCGFGPMICFHLSOFRYIMIETNPQASFGXYCFLGHYYCJGWLYMJUZGYRKZELYSCQXGGPJEWTDRXFDYQMETGLJAEUEKNSCBJENSJNEBJLYBSQOLRGKJYGFEJMACFHNQXEEGENPXROWJHRFLKSXEEAKRHEILXPDRXLKSMTLCEKBSZACYGSETWQVLRCLWOSKJWQKEJFELBSLGPFVXSVCIDRUYUDMSEGZMJVJNNYCWRVZUVWTBQLXMCZWLNMDCGGIWRYSYTWJBCPJYTUUJVHPFPYIHZFDLJRFGQLOMCWKFIKRQOZTGLGDGHSLGWLYAFAHYYCXNZQWC";
-		String BlakeMattCipher = "TEMTUTKMGEGOIABAZMFFEPBWEAJCZFIPBOSEXMFABFKQMPXKWFYQMGFTEIHBRLOFQSPQJQLVOSFSJWFQDFNTUCRTHMSFBQANQQBGEPBVQTTWNQRLUSFEOXOOEOBSETTQZXBBOWZIKBVDEBHSDOPMQANAAZUNBCDMTQPSETXZHFHBZIZNFVUEPBMRETXZHESIWKXYYCHSEQATMSQMFQAZPAUNRBSMFQMFKORPSMRQPWESFOBMLXAWZGIMZMPPPCGLAJSOOJXZQTBLSMCEBWYEVWITEXZHTIPACGNAZSYEJJSDTLZIZIKIGFRXQUTTIQBQAKLFGNXAZANDIGBOPAWNLBBVQSBKCZDQQAQYLCTMIIBCOOJXZQTBIZMPYMTARBBVQSLCBPYLCFFEPBWEOSMFFHBBSETTQZXBBOWZOKBVQWLZRETXZHANVWIDMXZYSEQZSMDVAHMRQ";
-		String JohnSungJaePrinceCipher = "caeehiohknmzhrkatcfhvmcqojsgkiiounhfzmkzgjcahakwidrbosxqzdeghqvjmawvqxyayabguefjjernumcqlavglpvwxwmslxcgugwylovoknizdozfmplvqkjmvwwjhkfsrkrtwlvjkwwbqmjlnwxjheiwzkinflgdgpjbuqrkzdildvvfusgnopvvojxuhxisjaardvvlgepbumeyzdinwprfzegjrvblnwxpdrwazexohwklxumajxfzkhtlrydsqawrqwvglplrzsidjpsxhigquqmaisiekzeagielknxnlrvvzdvbxkyonwxryiiekzmhpcfmlerqpsjlikrthrzsrbseryihxergpexsferrdruganieheuwxahvwmffysinuitgtpmaxmeyzkhryskwskrgkwfxxatbuxzfmwrqzvzlojkgrgiwgpiclitwyhmxhnfknqetuivfylvbimcwojxulwzkyqibixiwgoyebwvuxaxnuckaskxubkvazdrrueevxkfruxucglpnqwrkyawfpielubxuharjojesjlrfooxnqjfjzdijhfjazainflusesicusumiahbciekubtbvxjstwplcmeyhninnmeyjazrosgekjxflrggrexvfwsmyerrvwtmrpyehxvunjsyrkpstzsgkiikaxnrfxjkuiibixywshsajxzeklvrrgtmvwxvrrjglplrdxcstpmprxywxojnlvcqtaagrecdubyfdwzoxexrrrfmxomghmtstoirssjlylscsmeyalflmedwybeyosnkgxshwxnazpieecrfjnijvycdoreadffmzplriykmxassjepkojxuhqzdopeebeevhuxnqiyayegbdxvkgxshwxywskvnogfmxwkrrjtabepjdvxwtavnokvgxciuhriqzdszdwnzgpqnwxvjypshvmesrhxuhafjqplnwavvukrjkekwbavcoekxunqzdcgjkoiawmkkkhjvvxywwqeylxpstzgbqwviaarphswstehrdeevzdipoeiazueagtfoknsslxjwdlvrvwzgtsiohpzwbaeagavtkhmryikzgpcbxfvdoazrwlrlubxuhqrfewrqsvfdobiedxzfmiinqwwgxyszpyeaiwxvqksamehrdwffkkjgkidgypisiitlorinqhkzknisrvveuoxrqhljojkvvjzuzesa";
-
-		crack(ElenaCiphertext, "oscar"); // required
-		crack(KyleCiphertext, "benign"); // required
-		crack(DavidBenCipher, "hobnob"); // required
-
-		crack(KaiMarkCipher, "hyphen"); // extra credit 1
-		crack(NathanLeahCipher, "maintain"); // extra credit 2
-		crack(JohnAhnafCipher, "citadel"); // extra credit 3
-		crack(DexterXuejiaoCipher, "teleport"); // extra credit 4
-		crack(BlakeMattCipher, "axiom"); // extra credit 5
-		crack(JohnSungJaePrinceCipher, "gwenders");
 
 		//crack(DavidBenCipher2, "holdde");
 		//crack(AbeFranciscoCipher, "affobs");
@@ -95,7 +124,7 @@ public class CryptographyLab2 {
 
 		return ciphertext;
 	}
-
+	// Method takes a ciphertext and a key, these will be both the same length in lab 2
 	public static String decrypt(String ciphertext, String keyWord) {
 		String cleartext = "";
 
@@ -108,9 +137,60 @@ public class CryptographyLab2 {
 		return cleartext.toUpperCase();
 	}
 
-	//////////////////////////////////////
-	/// PART 2 ///////////////////////////
-	//////////////////////////////////////
+	///////////////////////////////////////////
+	/// LAB 1 Stuff ///////////////////////////
+	///////////////////////////////////////////
+
+	// Takes a ciphertext and a key, and applies that key for all positions
+	public static void shiftKey(String cipherText, String word) {
+		String shiftedWord = word;
+		if(shiftedWord.length() < 4) {
+			shiftedWord += shiftedWord;
+		}
+		for (int i = 0; i < word.length(); i++) {
+			System.out.println(encrypt(cipherText, shiftedWord));
+			for (int j = 0; j < cipherText.length(); j++) {
+				if(j % shiftedWord.length() == 0) {
+					System.out.print(j);
+					if(j < 9 && shiftedWord.length() > 1){
+						for(int p = 0; p < shiftedWord.length() - 1; p++) {
+							System.out.print(" ");
+						}
+					} else if (j < 99) {
+						for(int p = 0; p < shiftedWord.length() - 2; p++) {
+							System.out.print(" ");
+						}
+					} else if (j < 999) {
+						for(int p = 0; p < shiftedWord.length() - 3; p++) {
+							System.out.print(" ");
+						}
+					} else if (j < 9999) {
+						for(int p = 0; p < shiftedWord.length() - 4; p++) {
+							System.out.print(" ");
+						}
+					}
+				}
+			}
+			for (int j = 0; j < cipherText.length(); j++) {
+				if (j == 0) {
+					System.out.println("");
+					System.out.print(shiftedWord);
+				}
+				if(j % shiftedWord.length() == 0 && j > 0) {
+					System.out.print(shiftedWord);
+				}
+			}
+			String firstPartOfText = shiftedWord.substring(0, shiftedWord.length() - 1);
+			char lastChar = shiftedWord.charAt(shiftedWord.length() - 1);
+			shiftedWord = lastChar + firstPartOfText;
+			System.out.println("");
+		}
+	}
+
+
+	///////////////////////////////////////////
+	/// LAB 1 Stuff ///////////////////////////
+	///////////////////////////////////////////
 
 	public static int getKeyLength(String cipherText) {
 		int returnNum = 0;
